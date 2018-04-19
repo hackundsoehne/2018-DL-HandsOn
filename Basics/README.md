@@ -2,4 +2,4 @@
 
 ## Requirements
  - Python 3
- - install dependencies using `requirements.txt` (`virtualenv` required)
+ - install dependencies using `requirements.txt` (`virtualenv` recommended)
