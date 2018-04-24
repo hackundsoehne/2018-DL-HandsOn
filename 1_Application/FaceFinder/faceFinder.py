@@ -78,9 +78,6 @@ class FaceSearchEngine():
                 search_result = self._test_image(image_file)
                 if search_result:
                     search_result_list.append(search_result)
-            # search_result = [self._test_image(image_file) for image_file in image_files]
-            # search_result = [t for t in search_result if t] # filter Nones
-            #remove embedding from search result
             found_names = [name for embedding, name in search_result_list if name]
             search_result_list = [ (image_file, name) for image_file, name in zip(image_files, found_names)]
         return search_result_list
@@ -89,7 +86,8 @@ class FaceSearchEngine():
 
     def _test_image(self, image_file):
         '''
-        give an image file path, the closest known_face_encoding and known_name is returned
+        give an image file path, the closest known_face_encoding and known_name is returned.
+        If there are no faces, None is returned
         :param image_file:
         :return: closest known face encoding, closest known name
         '''
@@ -108,6 +106,7 @@ class FaceSearchEngine():
 
 
     def run_multiprocess(self):
+        #Todo implement maybe
         pass
 
     def maybeDownsize(self, unknown_image):
