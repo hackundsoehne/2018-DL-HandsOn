@@ -105,8 +105,8 @@ in theory, it's easy!
     \vfill
     \begin{align*}
         \Delta w_{ij} & = - \lambda \cdot \frac{\partial E}{\partial w_{ij}} \\
-         \onslide<2-> {& = - \lambda \cdot \sum_{n = 0}^{l_{j+1}} \frac{\partial E}{\partial w_{n (j+1)}}\frac{\partial w_{n (j+1)}}{\partial w_{ij}} \\ }
-         \onslide<3-> {& = - \lambda \cdot \sum_{n_1 = 0}^{l_{j+1}} \textcolor{blue}{(\sum_{n_2 = 0}^{l_{j+2}} \frac{\partial E}{\partial w_{n_2 (j+2)}}\frac{\partial w_{n_2 (j+2)}}{\partial w_{n_1 (j+1)}})} \frac{\partial w_{n_1 (j+1)}}{\partial w_{ij}} }
+         \onslide<2-> {& = - \lambda \cdot \sum_{n_1 = 0}^{l_{j+1}} \frac{\partial E}{\partial w_{n_1(j+1)}}\frac{\partial w_{n_1 (j+1)}}{\partial w_{ij}} \\ }
+         \onslide<3-> {& = - \lambda \cdot \sum_{n_1 = 0}^{l_{j+1}} \textcolor{blue}{\left(\sum_{n_2 = 0}^{l_{j+2}} \frac{\partial E}{\partial w_{n_2 (j+2)}}\frac{\partial w_{n_2 (j+2)}}{\partial w_{n_1 (j+1)}}\right)} \frac{\partial w_{n_1 (j+1)}}{\partial w_{ij}} }
     \end{align*}
 \end{frame}
 
