@@ -1,4 +1,0 @@
-face_recognition
-pyforms
-google_images_download
-opencv-python
