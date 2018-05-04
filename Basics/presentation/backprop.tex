@@ -101,23 +101,28 @@ in theory, it's easy!
 \end{frame}
 
 \begin{frame}{Chain rule to the rescue!}
-    $w_{ij}$ is a weight $i$ of layer $j$, $l_i$ is the number of weights in layer $i$
+    $y_{iz} = f(n_{iz})$, $n_{iz} = w_{iz}^T \cdot x_z + b_{iz}$ and trained with $H(\vec{target}, \vec{y_2})$
     \vfill
-    \begin{align*}
-        \Delta w_{ij} & = - \lambda \cdot \frac{\partial E}{\partial w_{ij}} \\
-         \onslide<2-> {& = - \lambda \cdot \sum_{n_1 = 0}^{l_{j+1}} \frac{\partial E}{\partial w_{n_1(j+1)}}\frac{\partial w_{n_1 (j+1)}}{\partial w_{ij}} \\ }
-         \onslide<3-> {& = - \lambda \cdot \sum_{n_1 = 0}^{l_{j+1}} \textcolor{blue}{\left(\sum_{n_2 = 0}^{l_{j+2}} \frac{\partial E}{\partial w_{n_2 (j+2)}}\frac{\partial w_{n_2 (j+2)}}{\partial w_{n_1 (j+1)}}\right)} \frac{\partial w_{n_1 (j+1)}}{\partial w_{ij}} }
-    \end{align*}
+    \begin{align}
+        \frac{\partial H}{\partial w_{piz}} & = \frac{\partial H}{\partial y_{iz}}\frac{\partial y_{iz}}{\partial w_{piz}} \\
+        \onslide<2->  {& = \textcolor{blue}{\frac{\partial H}{\partial y_{iz}}\frac{\partial y_{iz}}{\partial n_{iz}}}\frac{\partial n_{iz}}{\partial w_{piz}} \\}
+        \onslide<3-> {& =(\sum_{j_{(z +1)} = 0}^{l_{(z+1)}}\frac{\partial H}{\partial y_{j_{(z+1)}(z + 1)}}\frac{\partial y_{j_{(z+1)}(z + 1)}}{\partial y_{iz}})\frac{\partial y_{iz}}{\partial n_{iz}}x_{piz}}
+    \end{align}
+\end{frame}
+
+\begin{frame}{Chain rule to the rescue!}
+    $y_{iz} = f(n_{iz})$, $n_{iz} = w_{iz}^T \cdot x_z + b_{iz}$ and trained with $H(\vec{target}, \vec{y_2})$
+    \vfill
+    \begin{align}
+        \frac{\partial H}{\partial w_{piz}} & =(\sum_{j_{(z +1)} = 0}^{l_{(z+1)}}\frac{\partial H}{\partial y_{j_{(z+1)}(z + 1)}}\frac{\partial y_{j_{(z+1)}(z + 1)}}{\partial y_{iz}})\frac{\partial y_{iz}}{\partial n_{iz}}x_{piz} \\
+        \onslide<2-> {& =(\sum_{j_{(z +1)} = 0}^{l_{(z+1)}}\textcolor{blue}{\frac{\partial H}{\partial y_{j_{(z+1)}(z + 1)}}\frac{\partial y_{j_{(z+1)}(z + 1)}}{\partial n_{j_{(z+1)}(z + 1)}}}w_{ij_{(z+1)}(z + 1)})\frac{\partial y_{iz}}{\partial n_{iz}}x_{piz}}
+    \end{align}
 \end{frame}
 
 \begin{frame}{Chain rule to the rescue!}
     \begin{figure}
         \includegraphics[width=0.8\textwidth]{../assets/mlp_model.png}
     \end{figure}
-\end{frame}
-
-\begin{frame}{Scetch of the algorithm}
-    TODO
 \end{frame}
 
 \printbibliography
