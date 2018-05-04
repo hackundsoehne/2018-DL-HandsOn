@@ -107,7 +107,7 @@ class Train:
 
         #TODO total error
     
-class BackwardWeightsMNISt:
+class BackwardWeightsMNIST:
     """
     This class provides the weights for the forward-propagation Breast Cancer Wisconsin (Diagnostic) Dataset excersice.
     """
@@ -132,11 +132,17 @@ class BackwardWeightsMNISt:
     def getTrain(self, trainFkt, forewardFktProba):
         return Train(self.X_train, self.y_train, self.X_test, self.y_test, trainFkt, forewardFktProba, False)
     
-    def setWeights(self, W):
-        self.weights = W
+    def setWeights(self, i, W):
+        if (layer == 0):
+            self.weights0 = W
+        else:
+            self.weights1 = W
     
-    def setBias(self, b):
-        self.bias = b
+    def setBias(self, i, b):
+        if (layer == 0):
+            self.bias0 = b
+        else:
+            self.bias0 = b
     
     def getWeights(self, layer):
         """
