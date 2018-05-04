@@ -91,7 +91,7 @@ class ForewardWeightsMNIST:
     
     def visualize(self,forewardPassPropa):
         (r_x,r_y) = self.getRandom()
-        pred = forewardPassPropa(r_x)
+        pred0 = forewardPassPropa(r_x[0])
 
         plt.figure(figsize=(20,4))
         plt.subplot(1, 5, 1)
@@ -99,15 +99,18 @@ class ForewardWeightsMNIST:
         plt.title('Label: %i\n' % r_y[0], fontsize = 20)
         
         plt.subplot(1, 5, 2)
-        plt.bar(np.arange(0,10,1), pred[0], align='center', alpha=0.5)
+        plt.bar(np.arange(0,10,1), pred0, align='center', alpha=0.5)
+        plt.ylim(0, 1)
         plt.title('Prediction\n', fontsize = 20)
-
+        
+        pred1 = forewardPassPropa(r_x[0])
         plt.subplot(1, 5, 3)
         plt.imshow(np.reshape(r_x[1], (28,28)), cmap=plt.cm.gray)
         plt.title('Label: %i\n' % r_y[1], fontsize = 20)
         
         plt.subplot(1, 5, 4)
-        plt.bar(np.arange(0,10,1), pred[1])
+        plt.bar(np.arange(0,10,1), pred1)
+        plt.ylim(0, 1)
         plt.title('Prediction\n', fontsize = 20)
     
     def eval(self,forewardPassClass):
