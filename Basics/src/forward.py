@@ -41,7 +41,7 @@ class ForewardWeightsBCW:
         """
         evaluates forewardPass on the training dataset and returns the RMSE (root-mean-square error) 
         """
-        results = forewardPass(self.X_test)
+        results = np.apply_along_axis(forewardPass, 1, self.X_test)
         return mean_squared_error(self.y_test, results)
         
 
@@ -102,8 +102,9 @@ class ForewardWeightsMNIST:
         plt.bar(np.arange(0,10,1), pred0, align='center', alpha=0.5)
         plt.ylim(0, 1)
         plt.title('Prediction\n', fontsize = 20)
+        plt.xticks(np.arange(0,10,1))
         
-        pred1 = forewardPassPropa(r_x[0])
+        pred1 = forewardPassPropa(r_x[1])
         plt.subplot(1, 5, 3)
         plt.imshow(np.reshape(r_x[1], (28,28)), cmap=plt.cm.gray)
         plt.title('Label: %i\n' % r_y[1], fontsize = 20)
@@ -112,6 +113,7 @@ class ForewardWeightsMNIST:
         plt.bar(np.arange(0,10,1), pred1)
         plt.ylim(0, 1)
         plt.title('Prediction\n', fontsize = 20)
+        plt.xticks(np.arange(0,10,1))
     
     def eval(self,forewardPassClass):
         """
