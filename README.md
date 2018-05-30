@@ -4,10 +4,10 @@ repo for our coding workshop at http://talkit.eu/
 * Slides
 https://docs.google.com/presentation/d/1god6ZSmLLfTuoLVjDrNMVhM2s9aR1ddC70-6ZvEnHjA/edit?usp=sharing
 
-# Workshop Part 1: Applications of Deep Learning
+# Workshop Part 1: Python, Numpy, Jupyter - Introduction
 
 * Google Collab Notebook
-* https://drive.google.com/open?id=17x2MmUVOW0RbnfzPibwsVIuvK6Y5-w2D
+https://drive.google.com/file/d/1DHrLEsyP_3jDZwSjp9slDdhg_0d9jYwS/view?usp=sharing
 
 # Workshop Part 2: Backprop in Detail
 * Google Collab Notebook
