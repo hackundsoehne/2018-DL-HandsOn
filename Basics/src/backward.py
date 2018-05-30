@@ -7,6 +7,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import log_loss
 from sklearn.neural_network import MLPClassifier
 from sklearn.datasets import fetch_mldata
+from sklearn.preprocessing import scale
 import matplotlib.pyplot as plt
 import numpy.random as rand
 
@@ -19,7 +20,10 @@ class BackwardWeightsBCW:
     """
     def __init__(self):
         cancer = load_breast_cancer()
-        X_train, X_test, y_train, y_test = train_test_split(cancer.data, cancer.target, stratify=cancer.target, random_state=42)
+        scaled = scale(cancer.data)
+        X_train, X_test, y_train, y_test = train_test_split(scaled, cancer.target, stratify=cancer.target, random_state=42)
+        self.log_reg = LogisticRegression()
+        self.log_reg.fit(X_train, y_train)
         self.weights = np.clip(np.random.normal(0, 1/np.sqrt(30), 30).reshape((1,30)), -2, 2)
         self.bias = np.clip(np.random.normal(0, 1/np.sqrt(30), 1).reshape(()), -2, 2)
         self.X_test = X_test
@@ -59,6 +63,10 @@ class BackwardWeightsBCW:
         self.weights = np.clip(np.random.normal(0, 1/np.sqrt(30), 30).reshape((1,30)), -2, 2)
         self.bias = np.clip(np.random.normal(0, 1/np.sqrt(30), 1).reshape(()), -2, 2)
         
+    def solveWeights(self):
+        self.weights = self.log_reg.coef_
+        self.bias = self.log_reg.intercept_[0]
+        
     def eval(self,forewardPass):
         """
         evaluates forewardPass on the training dataset and returns the RMSE (root-mean-square error) 
@@ -86,9 +94,10 @@ class Train:
         self.test_id = 0
         
     def shuffle(self, X, Y):
-        idx = np.random.permutation(X.shape[0])
-        x,y = X[idx], Y[idx]
-        return (x,y)
+        #idx = np.random.permutation(X.shape[0])
+        #x,y = X[idx], Y[idx]
+        #return (x,y)
+        return (X, Y)
         
     def getNextTrain(self):
         if (self.train_id + self.batchsize > self.train_x.shape[0]):
@@ -132,8 +141,9 @@ class Train:
                     train_y = y_train
                 res_test = self.forewardFkt(test_x).reshape((-1,))
                 res_train = self.forewardFkt(train_x).reshape((-1,))
-                loss_test = np.mean(log_loss(test_y, res_test, labels=[0,1]))
-                loss_train = np.mean(log_loss(train_y, res_train, labels=[0,1]))
+                #loss_test = np.mean(log_loss(test_y, res_test, labels=[0,1]))
+                loss_test = np.mean((0.5)*np.power(test_y - res_test, 2))
+                loss_train = np.mean((0.5)*np.power(train_y - res_train, 2))
                 #import ipdb; ipdb.set_trace()
                 train_loss = np.append(train_loss, loss_train)
                 test_loss = np.append(test_loss,loss_test)
@@ -144,7 +154,7 @@ class Train:
 
         #TODO total error
         plt.figure()
-        plt.title("Test & Training cross-entropy loss")
+        plt.title("Test & Training MSE")
         plt.xlabel("Training examples")
         plt.ylabel("Score")
         plt.grid()
