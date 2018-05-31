@@ -31,12 +31,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 import tensorflow as tf
-
 assert K.image_data_format() == 'channels_last', 'Keras backend format is not channels_first'
 
 np.random.seed(1337)
 
 (x_train, _), (x_test, _) = mnist.load_data()
+x_train = x_train[:10000, ...] # to make epochs a little bit shorter
 image_size = x_train.shape[1]
 x_train = np.reshape(x_train, [-1, image_size, image_size, 1])
 x_test = np.reshape(x_test, [-1, image_size, image_size, 1])
@@ -118,17 +118,22 @@ class ShowImageCallback(keras.callbacks.Callback):
         self.validation_data = validation_data
         
     def on_epoch_begin(self, epoch, logs={}):
-        fig, axes  = plt.subplots(1, 2) 
+        fig, axes  = plt.subplots(1, 3) 
         noisy = self.validation_data[0][0,...].reshape(-1, 28, 28, 1)
+        truth = self.validation_data[1][0,...].reshape(-1, 28, 28, 1)
         denoised = self.model.predict(noisy)
         noisy = np.squeeze(noisy)
         denoised = np.squeeze(denoised)
+        truth = np.squeeze(truth)
         ax = axes[0]
         ax.imshow(noisy, cmap=plt.cm.gray)
         ax.set_title('noisy')
         ax = axes[1]
         ax.imshow(denoised, cmap=plt.cm.gray)
         ax.set_title('denoised')
+        ax = axes[2]
+        ax.imshow(truth, cmap=plt.cm.gray)
+        ax.set_title('truth')        
             
         for ax in axes:
             ax.set_axis_off()
