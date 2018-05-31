@@ -344,4 +344,6 @@ TSWLatexianTemp*
 *-tags.tex
 
 # standalone packages
-*.sta
+*.stabest_weights.hdf5
+current_weights.hdf5
+.png
