@@ -1,5 +1,5 @@
-# talkit2018-workshop
-repo for our coding workshop at http://talkit.eu/
+#Deep Learning Hands-on Workshop
+repo for our coding workshop www.hackundsoehne.de/deeplearning
 
 * Slides
 https://docs.google.com/presentation/d/1god6ZSmLLfTuoLVjDrNMVhM2s9aR1ddC70-6ZvEnHjA/edit?usp=sharing
