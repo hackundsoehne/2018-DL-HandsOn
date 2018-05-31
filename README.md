@@ -1,4 +1,4 @@
-#Deep Learning Hands-on Workshop
+# Deep Learning Hands-on Workshop
 repo for our coding workshop www.hackundsoehne.de/deeplearning
 
 * Slides
