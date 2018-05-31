@@ -123,7 +123,6 @@ class ShowImageCallback(keras.callbacks.Callback):
         denoised = self.model.predict(noisy)
         noisy = np.squeeze(noisy)
         denoised = np.squeeze(denoised)
-        clear_output()
         ax = axes[0]
         ax.imshow(noisy, cmap=plt.cm.gray)
         ax.set_title('noisy')
