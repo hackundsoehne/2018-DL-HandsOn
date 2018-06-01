@@ -2,7 +2,7 @@
 repo for our coding workshop www.hackundsoehne.de/deeplearning
 
 * Slides
-https://docs.google.com/presentation/d/1god6ZSmLLfTuoLVjDrNMVhM2s9aR1ddC70-6ZvEnHjA/edit?usp=sharing
+https://docs.google.com/presentation/d/1ggs3LvzoAObfqpiM0XQXqAKCo6RppoEihVbdsdocd0w/edit#slide=id.g3c0a6c48fe_0_93
 
 
 # How to use Google Collab Notebooks
