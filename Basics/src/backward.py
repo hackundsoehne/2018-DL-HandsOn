@@ -31,15 +31,15 @@ class BackwardWeightsBCW:
         self.y_test = y_test
         self.y_train = y_train
         
-    def getTrainID(self, trainFkt, forewardFktProba):
+    def getTrainID(self, trainFkt, forewardFktProba, batch):
         X_ID_test = np.ones(self.X_test.shape)
         X_ID_test[:,0] = self.y_test
         X_ID_train = np.ones(self.X_train.shape)
         X_ID_train[:,0] = self.y_train
-        return Train(X_ID_train, self.y_train, X_ID_test, self.y_test, trainFkt, forewardFktProba, False, 10)
+        return Train(X_ID_train, self.y_train.reshape(-1,1), X_ID_test, self.y_test.reshape(-1,1), trainFkt, forewardFktProba, False, batch)
         
     def getTrain(self, trainFkt, forewardFktProba):
-        return Train(self.X_train, self.y_train, self.X_test, self.y_test, trainFkt, forewardFktProba, False, 20)
+        return Train(self.X_train, self.y_train.reshape(-1,1), self.X_test, self.y_test.reshape(-1,1), trainFkt, forewardFktProba, False, 20)
     
     def setWeights(self, W):
         self.weights = W
@@ -133,15 +133,14 @@ class Train:
                 (train_x, train_y) = self.getNextTrain()
                 if (self.oneHot):
                     #convert to one-hot
-                    y_test = np.zeros((self.batchsize, 10))
-                    y_test[test_y] = 1
-                    test_y = y_test
-                    y_train = np.zeros((self.batchsize, 10))
-                    y_train[train_y] = 1
-                    train_y = y_train
-                res_test = self.forewardFkt(test_x).reshape((-1,))
-                res_train = self.forewardFkt(train_x).reshape((-1,))
+                    nb_classes = 10
+                    #import ipdb; ipdb.set_trace()
+                    test_y = np.eye(nb_classes)[test_y.astype(int)]
+                    train_y = np.eye(nb_classes)[train_y.astype(int)]
+                res_test = self.forewardFkt(test_x)
+                res_train = self.forewardFkt(train_x)
                 #loss_test = np.mean(log_loss(test_y, res_test, labels=[0,1]))
+                #import ipdb; ipdb.set_trace()
                 loss_test = np.mean((0.5)*np.power(test_y - res_test, 2))
                 loss_train = np.mean((0.5)*np.power(train_y - res_train, 2))
                 #import ipdb; ipdb.set_trace()
@@ -150,6 +149,10 @@ class Train:
                 #print ("train", loss_train / 5.)
                 #print ("test", loss_test / 5.)
             (train_x, train_y) = self.getNextTrain()
+            if (self.oneHot):
+                    #convert to one-hot
+                    nb_classes = 10
+                    train_y = np.eye(nb_classes)[train_y.astype(int)]
             self.trainFkt(train_x, train_y)
 
         #TODO total error
@@ -187,19 +190,19 @@ class BackwardWeightsMNIST:
         self.y_train = y_train
         
     def getTrain(self, trainFkt, forewardFktProba):
-        return Train(self.X_train, self.y_train, self.X_test, self.y_test, trainFkt, forewardFktProba, False)
+        return Train(self.X_train, self.y_train, self.X_test, self.y_test, trainFkt, forewardFktProba, True, 64)
     
-    def setWeights(self, i, W):
+    def setWeights(self, layer, W):
         if (layer == 0):
             self.weights0 = W
         else:
             self.weights1 = W
     
-    def setBias(self, i, b):
+    def setBias(self, layer, b):
         if (layer == 0):
             self.bias0 = b
         else:
-            self.bias0 = b
+            self.bias1 = b
     
     def getWeights(self, layer):
         """
