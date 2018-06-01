@@ -24,11 +24,11 @@ https://drive.google.com/file/d/1DHrLEsyP_3jDZwSjp9slDdhg_0d9jYwS/view?usp=shari
 # Workshop Part 3: Modern DL Framework & Workflow
 Google Collab Notebooks
 
-* Particpant notebooks
+* Participant notebooks
   * Keras MNIST : https://colab.research.google.com/drive/1zf55WftULwMF1Wg6qSH2nIva-ilXdX-l
   * Keras MNIST Denoising : https://colab.research.google.com/drive/1aboLUzY7wWhHh1CU6IU_jKwZF-hLVUQN
   
   
 * Solutions notebooks
   * Keras MNIST solutions : https://colab.research.google.com/drive/1hVLmwHGRQeY54d0pYk2lcDhAdAccfHco
-  * Keras MNISt Denoising solutions: https://colab.research.google.com/drive/1JPX9Ib9l530havAIJsX4Z8VCvLiz3ipG
+  * Keras MNIST Denoising solutions: https://colab.research.google.com/drive/1JPX9Ib9l530havAIJsX4Z8VCvLiz3ipG
