@@ -17,9 +17,9 @@ https://drive.google.com/file/d/1DHrLEsyP_3jDZwSjp9slDdhg_0d9jYwS/view?usp=shari
 
 # Workshop Part 2: Backprop in Detail
 * Google Collab Notebook
-* part 1: https://drive.google.com/file/d/1MU-12qAzRNi0xSPm8zEYZTmiZOcHNqeo/view?usp=sharing
-* part 2: https://drive.google.com/file/d/1AWAtXHSSTlPkho5aPGNiuLH6pQxDcQGa/view?usp=sharing
-* part 3: https://drive.google.com/file/d/1qm6ZYiQGzCLmEDF59CXeWuj5NVmSUk6Z/view?usp=sharing
+* part 1: https://drive.google.com/file/d/1XRf3D6Fbd1pURFtoEzgtC6WjBM_M0p_t/view?usp=sharing
+* part 2: https://drive.google.com/file/d/1WF4ZNPXOo7Tjwji3Zzx1u7OIdmihi5Ei/view?usp=sharing
+* part 3: https://drive.google.com/file/d/1IUVJ0xcm3H_8-mZ8Ngmmn6r9mgLMk9BY/view?usp=sharing
 
 # Workshop Part 3: Modern DL Framework & Workflow
 Google Collab Notebooks
