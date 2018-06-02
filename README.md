@@ -25,10 +25,10 @@ https://drive.google.com/file/d/1DHrLEsyP_3jDZwSjp9slDdhg_0d9jYwS/view?usp=shari
 Google Collab Notebooks
 
 * Participant notebooks
-  * Keras MNIST : https://colab.research.google.com/drive/1zf55WftULwMF1Wg6qSH2nIva-ilXdX-l
-  * Keras MNIST Denoising : https://colab.research.google.com/drive/1aboLUzY7wWhHh1CU6IU_jKwZF-hLVUQN
+  * Keras MNIST : https://drive.google.com/file/d/1zf55WftULwMF1Wg6qSH2nIva-ilXdX-l/view?usp=sharing
+  * Keras MNIST Denoising : https://drive.google.com/file/d/1aboLUzY7wWhHh1CU6IU_jKwZF-hLVUQN/view?usp=sharing
   
   
 * Solutions notebooks
-  * Keras MNIST solutions : https://colab.research.google.com/drive/1hVLmwHGRQeY54d0pYk2lcDhAdAccfHco
-  * Keras MNIST Denoising solutions: https://colab.research.google.com/drive/1JPX9Ib9l530havAIJsX4Z8VCvLiz3ipG
+  * Keras MNIST solutions : https://drive.google.com/file/d/1hVLmwHGRQeY54d0pYk2lcDhAdAccfHco/view?usp=sharing
+  * Keras MNIST Denoising solutions: https://drive.google.com/file/d/1JPX9Ib9l530havAIJsX4Z8VCvLiz3ipG/view?usp=sharing
