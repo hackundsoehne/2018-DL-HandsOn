@@ -94,10 +94,10 @@ class Train:
         self.test_id = 0
         
     def shuffle(self, X, Y):
-        #idx = np.random.permutation(X.shape[0])
-        #x,y = X[idx], Y[idx]
-        #return (x,y)
-        return (X, Y)
+        idx = np.random.permutation(X.shape[0])
+        x,y = X[idx], Y[idx]
+        return (x,y)
+        #return (X, Y)
         
     def getNextTrain(self):
         if (self.train_id + self.batchsize > self.train_x.shape[0]):
@@ -188,6 +188,17 @@ class BackwardWeightsMNIST:
         self.X_train = X_train
         self.y_test = y_test
         self.y_train = y_train
+        
+    def getTrainID(self, trainFkt, forewardFktProba, batch):
+        nb_classes = 10
+        #import ipdb; ipdb.set_trace()
+        y_test_oh = np.eye(nb_classes)[self.y_test.astype(int)]
+        y_train_oh = np.eye(nb_classes)[self.y_train.astype(int)]
+        X_ID_test = np.zeros(self.X_test.shape)
+        X_ID_test[:,:10] = y_test_oh
+        X_ID_train = np.zeros(self.X_train.shape)
+        X_ID_train[:,:10] = y_train_oh
+        return Train(X_ID_train, self.y_train, X_ID_test, self.y_test, trainFkt, forewardFktProba, True, batch)
         
     def getTrain(self, trainFkt, forewardFktProba):
         return Train(self.X_train, self.y_train, self.X_test, self.y_test, trainFkt, forewardFktProba, True, 64)
