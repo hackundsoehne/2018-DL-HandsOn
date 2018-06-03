@@ -4,6 +4,8 @@ repo for our coding workshop www.hackundsoehne.de/deeplearning
 * Slides
 https://docs.google.com/presentation/d/1ggs3LvzoAObfqpiM0XQXqAKCo6RppoEihVbdsdocd0w/edit?usp=sharing
 
+* Evaluation google form
+https://goo.gl/forms/TL8cMzcfvVSAkAC63
 
 # How to use Google Collab Notebooks
 We provide read-only Google Collab Notebooks for all participants.
@@ -32,3 +34,4 @@ Google Collab Notebooks
 * Solutions notebooks
   * Keras MNIST solutions : https://drive.google.com/file/d/1hVLmwHGRQeY54d0pYk2lcDhAdAccfHco/view?usp=sharing
   * Keras MNIST Denoising solutions: https://drive.google.com/file/d/1JPX9Ib9l530havAIJsX4Z8VCvLiz3ipG/view?usp=sharing
+
